@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JIJUNA GOURMET S.A.C. — Sistema de Gestión Ambiental ISO 14001:2015</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F7F3EC;
+    --dark: #1C1A16;
+    --gold: #B8841A;
+    --gold-light: #E8C76A;
+    --green: #2E5D3B;
+    --green-light: #4A8C5C;
+    --green-pale: #E8F2EB;
+    --warm-gray: #7A7166;
+    --border: #DDD5C4;
+    --white: #FFFFFF;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(28,26,22,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,132,26,0.3);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: rgba(255,255,255,0.5); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; letter-spacing: 0.1em; display: block; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 8rem 6rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(46,93,59,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: 'JIJUNA';
+    position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(8rem, 16vw, 18rem);
+    color: rgba(255,255,255,0.025);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-label::before {
+    content: ''; display: block; width: 2rem; height: 1px; background: var(--gold);
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+  }
+  h1 em { color: var(--gold-light); font-style: normal; }
+  .hero-sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    max-width: 500px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .hero-tags { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .tag {
+    border: 1px solid rgba(184,132,26,0.4);
+    color: var(--gold-light);
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    border-radius: 100px;
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.15em;
+    text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  }
+  .scroll-hint::after {
+    content: ''; display: block; width: 1px; height: 3rem; background: rgba(255,255,255,0.2);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollLine { 0%,100%{opacity:0.2} 50%{opacity:0.8} }
+
+  /* SECTION BASE */
+  section { padding: 6rem 6rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--green); font-weight: 500; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .section-label::before { content:''; width:1.5rem; height:1px; background:var(--green); display:block; }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .lead { color: var(--warm-gray); font-size: 1.05rem; max-width: 680px; margin-bottom: 3rem; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* EMPRESA SECTION */
+  .empresa-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .empresa-info h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem;
+    color: var(--dark);
+  }
+  .empresa-info p { color: var(--warm-gray); margin-bottom: 1rem; }
+  .data-list { list-style: none; margin-top: 2rem; }
+  .data-list li {
+    display: flex; gap: 1rem; padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border); font-size: 0.9rem;
+  }
+  .data-list li:last-child { border-bottom: none; }
+  .data-list .key { color: var(--warm-gray); min-width: 130px; flex-shrink: 0; }
+  .data-list .val { color: var(--dark); font-weight: 500; }
+  .mision-vision { display: flex; flex-direction: column; gap: 1.5rem; }
+  .mv-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .mv-card::before {
+    content:''; position:absolute; top:0; left:0; width:4px; height:100%;
+    background: var(--green);
+  }
+  .mv-card h4 { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:0.75rem; color:var(--dark); padding-left:1rem; }
+  .mv-card p { color:var(--warm-gray); font-size:0.92rem; padding-left:1rem; }
+
+  /* SERVICIOS */
+  .servicios-bg { background: var(--dark); color: var(--white); }
+  .servicios-bg .section-label { color: var(--gold); }
+  .servicios-bg .section-label::before { background: var(--gold); }
+  .servicios-bg h2 { color: var(--white); }
+  .servicios-bg .lead { color: rgba(255,255,255,0.5); }
+  .servicios-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
+  }
+  .servicio-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .servicio-card:hover {
+    background: rgba(184,132,26,0.08);
+    border-color: rgba(184,132,26,0.4);
+  }
+  .servicio-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .servicio-card h4 { color: var(--gold-light); font-size: 1rem; margin-bottom: 0.5rem; }
+  .servicio-card p { color: rgba(255,255,255,0.5); font-size: 0.88rem; }
+
+  /* NORMATIVA */
+  .norma-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    color: var(--warm-gray);
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .norma-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .norma-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--green);
+  }
+  .norma-item .ley { font-size: 0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); font-weight:500; margin-bottom:0.35rem; }
+  .norma-item h5 { font-size: 0.92rem; font-weight: 500; color: var(--dark); margin-bottom: 0.4rem; }
+  .norma-item p { font-size: 0.83rem; color: var(--warm-gray); }
+
+  /* RIESGOS */
+  .riesgos-bg { background: #F0EDE6; }
+  .riesgo-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 100px 120px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.1rem 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+  }
+  .riesgo-row:hover { border-color: var(--gold); }
+  .riesgo-row .aspecto { font-size: 0.88rem; font-weight: 500; color: var(--dark); }
+  .riesgo-row .descripcion { font-size: 0.83rem; color: var(--warm-gray); }
+  .nivel {
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .nivel-alto { background: #FDECEA; color: #A32D2D; }
+  .nivel-medio { background: #FFF3CD; color: #7A4F00; }
+  .nivel-bajo { background: var(--green-pale); color: var(--green); }
+  .frecuencia { font-size: 0.82rem; color: var(--warm-gray); text-align: center; }
+  .riesgo-header {
+    display: grid;
+    grid-template-columns: 180px 1fr 100px 120px;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .riesgo-header span { font-size: 0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--warm-gray); }
+
+  /* OBJETIVOS */
+  .objetivos-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+  }
+  .objetivo-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .objetivo-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--green-pale);
+    position: absolute; top: 0.75rem; right: 1.25rem;
+    line-height: 1;
+  }
+  .objetivo-card h4 { font-size: 0.92rem; font-weight: 500; color: var(--dark); margin-bottom: 0.5rem; }
+  .meta-badge {
+    display: inline-block;
+    background: var(--green-pale);
+    color: var(--green);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .kpi-bar {
+    margin-top: 1rem;
+    background: var(--cream);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .kpi-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 100px;
+    transition: width 1s ease;
+  }
+  .kpi-label { font-size: 0.75rem; color: var(--warm-gray); margin-top: 0.4rem; }
+
+  /* POLITICA */
+  .politica-bg {
+    background: var(--green);
+    color: var(--white);
+  }
+  .politica-bg h2 { color: var(--white); }
+  .politica-bg .section-label { color: rgba(255,255,255,0.6); }
+  .politica-bg .section-label::before { background: rgba(255,255,255,0.4); }
+  .politica-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;
+  }
+  .politica-item {
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 1.75rem;
+    background: rgba(255,255,255,0.07);
+  }
+  .politica-letra {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .politica-item p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.8; }
+
+  /* ORGANIGRAMA */
+  .org-tree {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
+  .org-level { display: flex; gap: 1.5rem; justify-content: center; position: relative; }
+  .org-node {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1.25rem;
+    text-align: center;
+    min-width: 140px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  .org-node.top { background: var(--dark); color: var(--gold-light); border-color: var(--dark); min-width: 200px; }
+  .org-node.mid { background: var(--green-pale); border-color: var(--green); color: var(--green); }
+  .org-connector { width: 1px; height: 2rem; background: var(--border); margin: 0 auto; }
+  .org-connector-h {
+    height: 1px; background: var(--border); align-self: flex-start; margin-top: 1.5rem;
+    position: absolute; left: 10%; right: 10%; top: 0;
+  }
+
+  /* DOCUMENTOS */
+  .doc-table-wrap { overflow-x: auto; }
+  table.doc-table {
+    width: 100%; border-collapse: collapse; font-size: 0.85rem;
+  }
+  .doc-table th {
+    background: var(--dark);
+    color: rgba(255,255,255,0.7);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .doc-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .doc-table tr:hover td { background: var(--green-pale); }
+  .code-badge {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    background: var(--cream);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--green);
+    white-space: nowrap;
+  }
+  .tipo-badge {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .tipo-Política { background: #E8F2EB; color: var(--green); }
+  .tipo-Procedimiento { background: #E6F1FB; color: #185FA5; }
+  .tipo-Registro { background: #FAEEDA; color: #854F0B; }
+  .tipo-Matriz { background: #FAECE7; color: #993C1D; }
+  .tipo-Programa { background: #EEEDFE; color: #534AB7; }
+  .tipo-Plan { background: #FBEAF0; color: #993556; }
+  .tipo-Manual { background: #F1EFE8; color: #5F5E5A; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.4);
+    padding: 3rem 6rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; color: var(--gold-light); font-size: 1.2rem; }
+  .footer-brand span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 0.25rem; }
+  .footer-info { font-size: 0.8rem; text-align: right; }
+  .footer-info p { margin-bottom: 0.25rem; }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    section { padding: 4rem 2rem; }
+    .hero { padding: 7rem 2rem 4rem; }
+    .empresa-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .politica-grid { grid-template-columns: 1fr; }
+    .riesgo-row { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    footer { padding: 2.5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#inicio">JIJUNA GOURMET <span>ISO 14001 : 2015</span></a>
+  <ul class="nav-links">
+    <li><a href="#empresa">Empresa</a></li>
+    <li><a href="#normativa">Normativa</a></li>
+    <li><a href="#sga">SGA</a></li>
+    <li><a href="#objetivos">Objetivos</a></li>
+    <li><a href="#documentos">Documentos</a></li>
+    <li><a href="#archivos">Archivos PDF</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-label">Informe Técnico · Semestre 2026-1</div>
+  <h1>Sistema de Gestión<br>Ambiental para<br><em>Jijuna Gourmet</em></h1>
+  <p class="hero-sub">Diseño e implementación del SGA bajo la norma ISO 14001:2015 para el restaurante Jijuna Gourmet S.A.C., sede Cajamarca — Mega Plaza.</p>
+  <div class="hero-tags">
+    <span class="tag">ISO 14001:2015</span>
+    <span class="tag">Cajamarca, Perú</span>
+    <span class="tag">Sector Gastronómico</span>
+    <span class="tag">CIIU 55205</span>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<hr class="divider">
+
+<!-- EMPRESA -->
+<section id="empresa">
+  <div class="section-label">Etapa 1 & 2</div>
+  <h2>Descripción de la empresa</h2>
+  <p class="lead">JIJUNA GOURMET S.A.C. es un restaurante cajamarquino dedicado a la gastronomía regional y contemporánea, con tres sedes en la ciudad. Este SGA aplica a la sede principal a espaldas del Mega Plaza.</p>
+
+  <div class="empresa-grid fade-up">
+    <div class="empresa-info">
+      <h3>Datos generales</h3>
+      <ul class="data-list">
+        <li><span class="key">Razón Social</span><span class="val">Jijuna Gourmet S.A.C.</span></li>
+        <li><span class="key">RUC</span><span class="val">20496177551</span></li>
+        <li><span class="key">Dirección</span><span class="val">Jr. Eduardo Rodríguez Urrunaga N.° 206, Cajamarca</span></li>
+        <li><span class="key">CIIU</span><span class="val">55205 — Restaurantes, bares y cantinas</span></li>
+        <li><span class="key">Sedes</span><span class="val">Jijuna · Cristo Rey · Roma</span></li>
+        <li><span class="key">Sede SGA</span><span class="val">Jijuna (a espaldas del Mega Plaza)</span></li>
+        <li><span class="key">Directores</span><span class="val">Ricardo Briones Gutiérrez / Cristián Gutiérrez Julca</span></li>
+        <li><span class="key">Norma base</span><span class="val">ISO 14001:2015</span></li>
+      </ul>
+    </div>
+    <div class="mision-vision">
+      <div class="mv-card">
+        <h4>Misión</h4>
+        <p>Brindar servicios de alimentación de calidad mediante la preparación de menús nutritivos y accesibles, satisfaciendo las necesidades de nuestros clientes a través de una atención eficiente, garantizando la inocuidad de los alimentos y promoviendo prácticas responsables con el medio ambiente en cada uno de nuestros procesos.</p>
+      </div>
+      <div class="mv-card">
+        <h4>Visión</h4>
+        <p>Ser una empresa reconocida a nivel local por la calidad de sus servicios de alimentación, su compromiso con la satisfacción del cliente y la implementación de prácticas sostenibles, consolidándose como un referente en la gestión responsable de recursos y cuidado del medio ambiente en el sector gastronómico.</p>
+      </div>
+      <div class="mv-card">
+        <h4>Alcance del SGA</h4>
+        <p>Comprende todas las actividades administrativas y operativas relacionadas con la preparación y comercialización de alimentos, incluyendo la atención directa en salón, servicio delivery, cocina, almacén, limpieza y gestión de residuos — en la sede Cajamarca / Mega Plaza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICIOS -->
+<section class="servicios-bg" id="servicios">
+  <div class="section-label">Productos & Servicios</div>
+  <h2>¿Qué ofrece Jijuna Gourmet?</h2>
+  <p class="lead">Una propuesta gastronómica que fusiona la cocina regional cajamarquina con elaboraciones contemporáneas, disponible en tres modalidades de servicio.</p>
+  <div class="servicios-grid fade-up">
+    <div class="servicio-card">
+      <div class="servicio-icon">🍽️</div>
+      <h4>Atención en salón</h4>
+      <p>Servicio directo al cliente con platos a la carta: carnes, pollo, pastas y platos típicos de la región cajamarquina.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🛵</div>
+      <h4>Delivery</h4>
+      <p>Servicio de entrega a domicilio para pedidos externos, con uso progresivo de envases biodegradables.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">📦</div>
+      <h4>Take away</h4>
+      <p>Pedidos para llevar con empaque que garantiza la presentación y calidad del producto al momento de entrega.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🎉</div>
+      <h4>Eventos</h4>
+      <p>Atención en eventos sociales y familiares, catering corporativo y reservas de mesas con servicio personalizado.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🥗</div>
+      <h4>Menú diario</h4>
+      <p>Menús preparados diariamente con insumos frescos, entradas, segundos, postres y bebidas frías y calientes.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">♻️</div>
+      <h4>Gestión ambiental</h4>
+      <p>Reciclaje básico, segregación de residuos, control de aceites usados y prácticas de ahorro de agua y energía.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NORMATIVA -->
+<section id="normativa">
+  <div class="section-label">Etapa 1 — Marco Legal</div>
+  <h2>Normativa ambiental aplicable</h2>
+  <p class="lead">La actividad del restaurante está regulada por un conjunto de normas en tres niveles: nacional, sectorial y regional/municipal.</p>
+
+  <div class="norma-tabs">
+    <button class="tab-btn active" onclick="showTab('nacional', this)">Nacional</button>
+    <button class="tab-btn" onclick="showTab('sectorial', this)">Sectorial</button>
+    <button class="tab-btn" onclick="showTab('regional', this)">Regional / Municipal</button>
+    <button class="tab-btn" onclick="showTab('entidades', this)">Entidades reguladoras</button>
+  </div>
+
+  <div id="tab-nacional" class="tab-content active">
+    <div class="norma-grid fade-up">
+      <div class="norma-item">
+        <div class="ley">Constitución Política 1993</div>
+        <h5>Derecho a un ambiente equilibrado</h5>
+        <p>Garantiza el derecho a vivir en un ambiente adecuado y la obligación del Estado de proteger el medio ambiente.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">Ley N.° 28611 — Ley General del Ambiente</div>
+        <h5>Principios de protección ambiental</h5>
+        <p>Prevención de la contaminación, uso responsable de recursos naturales y mejora continua del desempeño ambiental.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">D.L. 1278 / D.S. 014-2017-MINAM</div>
+        <h5>Gestión Integral de Residuos Sólidos</h5>
+        <p>Regula el manejo adecuado de residuos orgánicos, envases, aceites usados y otros desechos generados.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">Ley N.° 27446 / D.S. 019-2009-MINAM</div>
+        <h5>Sistema Nacional de EIA</h5>
+        <p>Regula la evaluación de impactos ambientales en actividades que puedan generar efectos negativos en el entorno.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">Ley N.° 29783</div>
+        <h5>Seguridad y Salud en el Trabajo</h5>
+        <p>Identificación de riesgos laborales, EPP, capacitaciones y planes de emergencia para los trabajadores.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-sectorial" class="tab-content">
+    <div class="norma-grid fade-up">
+      <div class="norma-item">
+        <div class="ley">D.S. N.° 007-98-SA</div>
+        <h5>Vigilancia y Control Sanitario de Alimentos</h5>
+        <p>Condiciones higiénicas que deben cumplir los establecimientos de alimentos para garantizar la inocuidad.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">Norma Sanitaria MINSA</div>
+        <h5>Restaurantes y Servicios Afines</h5>
+        <p>Limpieza, manipulación de alimentos, almacenamiento y control de calidad sanitaria en el sector.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">D.L. N.° 1062</div>
+        <h5>Ley de Inocuidad de los Alimentos</h5>
+        <p>Asegura que los alimentos producidos o comercializados no representen riesgos para la salud.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">ANA — Autoridad Nacional del Agua</div>
+        <h5>Uso de agua y vertimientos</h5>
+        <p>Uso responsable del agua y disposición de aguas residuales, evitando la contaminación de fuentes hídricas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-regional" class="tab-content">
+    <div class="norma-grid fade-up">
+      <div class="norma-item">
+        <div class="ley">Municipalidad Provincial de Cajamarca</div>
+        <h5>Licencia de funcionamiento</h5>
+        <p>Habilitación formal del establecimiento para operar en la ciudad de Cajamarca.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">Entidades municipales</div>
+        <h5>Inspecciones sanitarias y de seguridad</h5>
+        <p>Verificación del cumplimiento de condiciones mínimas de higiene y seguridad en el local.</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">Ordenanzas municipales</div>
+        <h5>Manejo de residuos sólidos comerciales</h5>
+        <p>Lineamientos locales para la separación, almacenamiento y disposición final de residuos comerciales.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-entidades" class="tab-content">
+    <div class="norma-grid fade-up">
+      <div class="norma-item">
+        <div class="ley">Municipalidades</div>
+        <h5>Licencias e inspecciones sanitarias</h5>
+        <p>Ley Orgánica de Municipalidades</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">MINSA / DIGESA</div>
+        <h5>Inocuidad y condiciones higiénicas</h5>
+        <p>D.S. N.° 007-98-SA / D.L. N.° 1062</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">OEFA</div>
+        <h5>Fiscalización ambiental</h5>
+        <p>Ley N.° 28611 / D.L. 1278</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">MINAM</div>
+        <h5>Políticas nacionales de gestión ambiental</h5>
+        <p>Ley N.° 28611 / D.S. 019-2009-MINAM</p>
+      </div>
+      <div class="norma-item">
+        <div class="ley">ANA</div>
+        <h5>Recursos hídricos y vertimientos</h5>
+        <p>Ley de Recursos Hídricos — Ley N.° 29338</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SGA / RIESGOS -->
+<section class="riesgos-bg" id="sga">
+  <div class="section-label">Etapa 4 — Planificación</div>
+  <h2>Aspectos e impactos ambientales</h2>
+  <p class="lead">Identificación de los principales aspectos ambientales de las operaciones del restaurante y su nivel de significancia conforme a ISO 14001:2015.</p>
+
+  <div class="riesgo-header">
+    <span>Aspecto ambiental</span>
+    <span>Descripción del impacto</span>
+    <span style="text-align:center">Nivel</span>
+    <span style="text-align:center">Frecuencia</span>
+  </div>
+
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">🛢️ Aceites vegetales usados</div>
+    <div class="descripcion">Contaminación del agua y suelo; obstrucción de alcantarillado por vertido inadecuado de AVU</div>
+    <div><span class="nivel nivel-alto">Significativo</span></div>
+    <div class="frecuencia">Alta</div>
+  </div>
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">🗑️ Residuos sólidos orgánicos</div>
+    <div class="descripcion">Proliferación de vectores, malos olores y contaminación del suelo por mermas y restos de comida</div>
+    <div><span class="nivel nivel-alto">Significativo</span></div>
+    <div class="frecuencia">Alta</div>
+  </div>
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">💧 Vertimiento de aguas residuales</div>
+    <div class="descripcion">Descarga de aguas con grasas y detergentes; sobrecarga al sistema de alcantarillado</div>
+    <div><span class="nivel nivel-alto">Significativo</span></div>
+    <div class="frecuencia">Alta</div>
+  </div>
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">💧 Consumo de agua potable</div>
+    <div class="descripcion">Agotamiento del recurso hídrico por lavado de utensilios, pisos e ingredientes</div>
+    <div><span class="nivel nivel-medio">Moderado</span></div>
+    <div class="frecuencia">Alta</div>
+  </div>
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">⚡ Consumo de energía eléctrica</div>
+    <div class="descripcion">Agotamiento de recursos naturales; emisión indirecta de GEI por refrigeración e iluminación</div>
+    <div><span class="nivel nivel-medio">Moderado</span></div>
+    <div class="frecuencia">Alta</div>
+  </div>
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">💨 Emisiones atmosféricas</div>
+    <div class="descripcion">Humos, vapores y olores de la cocción; afectación a la calidad del aire local y vecindario</div>
+    <div><span class="nivel nivel-medio">Moderado</span></div>
+    <div class="frecuencia">Alta</div>
+  </div>
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">🧴 Residuos inorgánicos</div>
+    <div class="descripcion">Envases plásticos y descartables del servicio delivery; aumento en rellenos sanitarios</div>
+    <div><span class="nivel nivel-medio">Moderado</span></div>
+    <div class="frecuencia">Media</div>
+  </div>
+  <div class="riesgo-row fade-up">
+    <div class="aspecto">🔊 Ruido</div>
+    <div class="descripcion">Contaminación acústica por campanas, motores y licuadoras en cocina</div>
+    <div><span class="nivel nivel-bajo">No significativo</span></div>
+    <div class="frecuencia">Alta</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- OBJETIVOS -->
+<section id="objetivos">
+  <div class="section-label">Etapa 4 — Requisito 6.2</div>
+  <h2>Objetivos ambientales y KPIs</h2>
+  <p class="lead">Metas SMART diseñadas para reducir los impactos significativos del restaurante, con indicadores de seguimiento mensual y trimestral.</p>
+  <div class="objetivos-grid fade-up">
+    <div class="objetivo-card">
+      <div class="objetivo-num">01</div>
+      <div class="meta-badge">−15% en 12 meses</div>
+      <h4>Reducir consumo de agua</h4>
+      <p style="font-size:0.83rem;color:var(--warm-gray);">Disminuir el consumo mensual de agua en lavado y preparación de alimentos.</p>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:40%"></div></div>
+      <div class="kpi-label">Indicador: m³ consumidos / mes · Base: 100 m³</div>
+    </div>
+    <div class="objetivo-card">
+      <div class="objetivo-num">02</div>
+      <div class="meta-badge">−20% en 12 meses</div>
+      <h4>Reducir residuos orgánicos</h4>
+      <p style="font-size:0.83rem;color:var(--warm-gray);">Planificación del mise en place y control de porciones para reducir mermas.</p>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:30%"></div></div>
+      <div class="kpi-label">Indicador: Kg residuos orgánicos / mes · Base: 250 kg</div>
+    </div>
+    <div class="objetivo-card">
+      <div class="objetivo-num">03</div>
+      <div class="meta-badge">100% en 6 meses</div>
+      <h4>Segregación en todas las áreas</h4>
+      <p style="font-size:0.83rem;color:var(--warm-gray);">Contenedores diferenciados (verde / azul / negro / rojo-AVU) en el 100% de áreas operativas.</p>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:40%"></div></div>
+      <div class="kpi-label">Indicador: % áreas con segregación · Base: 40%</div>
+    </div>
+    <div class="objetivo-card">
+      <div class="objetivo-num">04</div>
+      <div class="meta-badge">−10% en 12 meses</div>
+      <h4>Reducir consumo energético</h4>
+      <p style="font-size:0.83rem;color:var(--warm-gray);">Apagado de equipos en desuso, mantenimiento preventivo y uso de luz natural.</p>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:35%"></div></div>
+      <div class="kpi-label">Indicador: kWh consumidos / mes · Base: 850 kWh</div>
+    </div>
+    <div class="objetivo-card">
+      <div class="objetivo-num">05</div>
+      <div class="meta-badge">100% en 6 meses</div>
+      <h4>Manejo adecuado de AVU</h4>
+      <p style="font-size:0.83rem;color:var(--warm-gray);">Almacenamiento en bidones cerrados y entrega a gestor de aceites autorizado.</p>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:50%"></div></div>
+      <div class="kpi-label">Indicador: % aceite almacenado correctamente · Base: 50%</div>
+    </div>
+    <div class="objetivo-card">
+      <div class="objetivo-num">06</div>
+      <div class="meta-badge">100% en 6 meses</div>
+      <h4>Capacitar a todo el personal</h4>
+      <p style="font-size:0.83rem;color:var(--warm-gray);">Programa anual de 12 sesiones con registro de asistencia y evaluación de conocimientos.</p>
+      <div class="kpi-bar"><div class="kpi-fill" style="width:30%"></div></div>
+      <div class="kpi-label">Indicador: % trabajadores capacitados · Base: 30%</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- POLÍTICA AMBIENTAL -->
+<section class="politica-bg" id="politica">
+  <div class="section-label">Requisito 5.2</div>
+  <h2 style="color:white">Política Ambiental</h2>
+  <p style="color:rgba(255,255,255,0.6);margin-bottom:2.5rem;max-width:680px;">Declaración formal de la alta dirección de JIJUNA GOURMET S.A.C. conforme a los cinco requisitos de la norma ISO 14001:2015.</p>
+  <div class="politica-grid fade-up">
+    <div class="politica-item">
+      <div class="politica-letra">a)</div>
+      <p>Brindamos experiencias gastronómicas de alta calidad y servicios integrales, operando de manera responsable con nuestros insumos, reconociendo los impactos asociados al consumo de agua, generación de residuos orgánicos y descarga de aguas residuales.</p>
+    </div>
+    <div class="politica-item">
+      <div class="politica-letra">b)</div>
+      <p>Esta política sirve como marco de referencia para establecer objetivos ambientales orientados a reducir la contaminación del agua, controlar los malos olores y mejorar la gestión de residuos en todas nuestras operaciones.</p>
+    </div>
+    <div class="politica-item">
+      <div class="politica-letra">c)</div>
+      <p>Nos comprometemos con la protección del medio ambiente mediante la prevención de la contaminación, reducción del uso de recursos naturales como el agua, y gestión adecuada de residuos. Promovemos el uso sostenible de recursos.</p>
+    </div>
+    <div class="politica-item">
+      <div class="politica-letra">d)</div>
+      <p>Nos comprometemos a cumplir con los requisitos legales ambientales vigentes (Ley 28611, D.L. 1278, D.S. 007-98-SA) y otros requisitos aplicables relacionados con nuestras actividades gastronómicas.</p>
+    </div>
+    <div class="politica-item" style="grid-column: 1 / -1;">
+      <div class="politica-letra">e)</div>
+      <p>Evaluamos y perfeccionamos constantemente nuestros procesos de preparación y servicio para reducir nuestro impacto ambiental, manteniendo la sensibilización y formación continua de nuestros colaboradores como base de la mejora continua del SGA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTOS -->
+<section id="documentos">
+  <div class="section-label">Requisito 7.5 — Lista Maestra</div>
+  <h2>Información documentada del SGA</h2>
+  <p class="lead">Listado maestro de todos los documentos que conforman el Sistema de Gestión Ambiental, con su código, tipo y custodio responsable.</p>
+  <div class="doc-table-wrap fade-up">
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Documento</th>
+          <th>Tipo</th>
+          <th>Requisito ISO</th>
+          <th>Custodio</th>
+          <th>Soporte</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="code-badge">JJ-POL-SGA-01</span></td><td>Política Ambiental</td><td><span class="tipo-badge tipo-Política">Política</span></td><td>5.2</td><td>Dir. General</td><td>Físico/Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-MAN-SGA-01</span></td><td>Manual del SGA ISO 14001:2015</td><td><span class="tipo-badge tipo-Manual">Manual</span></td><td>4.4</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRC-SGA-01</span></td><td>Identificación de Aspectos e Impactos Ambientales</td><td><span class="tipo-badge tipo-Procedimiento">Procedimiento</span></td><td>6.1.2</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRC-SGA-02</span></td><td>Identificación de Requisitos Legales</td><td><span class="tipo-badge tipo-Procedimiento">Procedimiento</span></td><td>6.1.3</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRC-SGA-03</span></td><td>Gestión de Residuos Sólidos</td><td><span class="tipo-badge tipo-Procedimiento">Procedimiento</span></td><td>8.1</td><td>Jefe Cocina</td><td>Físico/Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRC-SGA-04</span></td><td>Manejo de Aceites Vegetales Usados (AVU)</td><td><span class="tipo-badge tipo-Procedimiento">Procedimiento</span></td><td>8.1</td><td>Jefe Cocina</td><td>Físico/Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRC-SGA-05</span></td><td>Uso Eficiente del Agua y Energía</td><td><span class="tipo-badge tipo-Procedimiento">Procedimiento</span></td><td>8.1</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRC-SGA-06</span></td><td>Control y Limpieza de Trampa de Grasa</td><td><span class="tipo-badge tipo-Procedimiento">Procedimiento</span></td><td>8.1</td><td>Jefe Cocina</td><td>Físico/Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRC-SGA-07</span></td><td>Preparación y Respuesta ante Emergencias</td><td><span class="tipo-badge tipo-Procedimiento">Procedimiento</span></td><td>8.2</td><td>Resp. SGA</td><td>Físico/Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRG-SGA-01</span></td><td>Programa Anual de Capacitaciones Ambientales 2026</td><td><span class="tipo-badge tipo-Programa">Programa</span></td><td>7.3</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRG-SGA-02</span></td><td>Programa de Monitoreo de KPIs Ambientales</td><td><span class="tipo-badge tipo-Programa">Programa</span></td><td>9.1.1</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PRG-SGA-03</span></td><td>Programa de Auditoría Interna 2026</td><td><span class="tipo-badge tipo-Programa">Programa</span></td><td>9.2.2</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-MAT-SGA-01</span></td><td>Matriz de Aspectos e Impactos Ambientales</td><td><span class="tipo-badge tipo-Matriz">Matriz</span></td><td>6.1.2</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-MAT-SGA-02</span></td><td>Matriz de Requisitos Legales y Otros Requisitos</td><td><span class="tipo-badge tipo-Matriz">Matriz</span></td><td>6.1.3</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-MAT-SGA-03</span></td><td>Matriz de Riesgos y Oportunidades del SGA</td><td><span class="tipo-badge tipo-Matriz">Matriz</span></td><td>6.1.1</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-MAT-SGA-04</span></td><td>Matriz de Partes Interesadas</td><td><span class="tipo-badge tipo-Matriz">Matriz</span></td><td>4.2</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-MAT-SGA-05</span></td><td>Matriz de Objetivos Ambientales y KPIs</td><td><span class="tipo-badge tipo-Matriz">Matriz</span></td><td>6.2</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-REG-SGA-07</span></td><td>Registro: Monitoreo de KPIs (agua, energía, residuos, AVU)</td><td><span class="tipo-badge tipo-Registro">Registro</span></td><td>9.1.1</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-REG-OPE-01</span></td><td>Registro Diario: Generación y Segregación de Residuos</td><td><span class="tipo-badge tipo-Registro">Registro</span></td><td>8.1</td><td>Jefe Cocina</td><td>Físico</td></tr>
+        <tr><td><span class="code-badge">JJ-REG-OPE-02</span></td><td>Registro: Entrega de AVU a Gestor Autorizado</td><td><span class="tipo-badge tipo-Registro">Registro</span></td><td>8.1</td><td>Jefe Cocina</td><td>Físico/Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-PLN-SGA-01</span></td><td>Plan de Gestión Ambiental (acciones, plazos, costos)</td><td><span class="tipo-badge tipo-Plan">Plan</span></td><td>6.1.4</td><td>Resp. SGA</td><td>Digital</td></tr>
+        <tr><td><span class="code-badge">JJ-REG-RHH-01</span></td><td>Registro: Asistencia a Capacitaciones Ambientales</td><td><span class="tipo-badge tipo-Registro">Registro</span></td><td>7.2/7.3</td><td>Resp. SGA</td><td>Físico/Digital</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ARCHIVOS PDF -->
+<section id="archivos" style="background:var(--dark);padding:6rem;">
+  <div class="section-label" style="color:var(--gold);"><span style="display:inline-block;width:1.5rem;height:1px;background:var(--gold);margin-right:0.5rem;vertical-align:middle;"></span>Documentos SGA</div>
+  <h2 style="color:white;font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:0.75rem;">Archivos del proyecto</h2>
+  <p style="color:rgba(255,255,255,0.5);margin-bottom:2.5rem;max-width:600px;">Haz clic en cualquier documento para visualizarlo directamente en esta página, sin necesidad de descargarlo.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-bottom:2.5rem;">
+
+    <a class="pdf-btn" href="https://drive.google.com/file/d/1Dqirg1nfx3Ui8VAFOv55yOdiyGC5OqiV/view?usp=sharing" target="_blank">
+      <span class="pdf-icon">📋</span>
+      <span class="pdf-title">Lista Maestra JIJUNA</span>
+      <span class="pdf-tag">JJ-MAN-SGA</span>
+      <span class="pdf-open">Abrir ↗</span>
+    </a>
+
+    <a class="pdf-btn" href="https://drive.google.com/file/d/1lL-DWBMHorMixjKfnN8Ymtkre8scPhKR/view?usp=sharing" target="_blank">
+      <span class="pdf-icon">🗺️</span>
+      <span class="pdf-title">Mapa de Procesos JIJUNA</span>
+      <span class="pdf-tag">Etapa 3</span>
+      <span class="pdf-open">Abrir ↗</span>
+    </a>
+
+    <a class="pdf-btn" href="https://drive.google.com/file/d/1UflKY52Y5VXQvn_IJkt78g4nMkivNbKq/view?usp=sharing" target="_blank">
+      <span class="pdf-icon">⚙️</span>
+      <span class="pdf-title">Matriz de Aspectos e Impactos Ambientales</span>
+      <span class="pdf-tag">JJ-MAT-SGA-01</span>
+      <span class="pdf-open">Abrir ↗</span>
+    </a>
+
+    <a class="pdf-btn" href="https://drive.google.com/file/d/1WR7I4uuLSX16urjpSNOrxpjbMcJQf-KG/view?usp=sharing" target="_blank">
+      <span class="pdf-icon">👥</span>
+      <span class="pdf-title">Matriz de Partes Interesadas</span>
+      <span class="pdf-tag">JJ-MAT-SGA-04</span>
+      <span class="pdf-open">Abrir ↗</span>
+    </a>
+
+    <a class="pdf-btn" href="https://drive.google.com/file/d/1VUvYsOPzMEMKGhzP95wc1iPwcw63UNnO/view?usp=sharing" target="_blank">
+      <span class="pdf-icon">⚖️</span>
+      <span class="pdf-title">Matriz de Requisitos Legales</span>
+      <span class="pdf-tag">JJ-MAT-SGA-02</span>
+      <span class="pdf-open">Abrir ↗</span>
+    </a>
+
+    <a class="pdf-btn" href="https://drive.google.com/file/d/1WEnG6W3HU-Hgya9w7Jow5bQU8GKZhjh4/view?usp=sharing" target="_blank">
+      <span class="pdf-icon">🔍</span>
+      <span class="pdf-title">Matriz de Riesgos y Oportunidades</span>
+      <span class="pdf-tag">JJ-MAT-SGA-03</span>
+      <span class="pdf-open">Abrir ↗</span>
+    </a>
+
+    <a class="pdf-btn" href="https://drive.google.com/file/d/1xn8Eq1sRuQzFGaNU6AjTWUEwbdLT1tcG/view?usp=sharing" target="_blank">
+      <span class="pdf-icon">🌿</span>
+      <span class="pdf-title">Política Ambiental JIJUNA</span>
+      <span class="pdf-tag">JJ-POL-SGA-01</span>
+      <span class="pdf-open">Abrir ↗</span>
+    </a>
+
+  </div>
+
+</section>
+
+<style>
+.pdf-btn {
+  display:flex; flex-direction:column; align-items:flex-start; gap:0.5rem;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:1.5rem;
+  cursor:pointer;
+  text-align:left;
+  text-decoration:none;
+  transition:background 0.25s, border-color 0.25s, transform 0.15s;
+  font-family:'DM Sans',sans-serif;
+}
+.pdf-btn:hover {
+  background:rgba(184,132,26,0.12);
+  border-color:rgba(184,132,26,0.5);
+  transform:translateY(-2px);
+}
+.pdf-icon { font-size:1.6rem; }
+.pdf-title { color:white; font-size:0.92rem; font-weight:500; line-height:1.4; }
+.pdf-tag {
+  font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--gold); background:rgba(184,132,26,0.15);
+  padding:0.2rem 0.6rem; border-radius:100px;
+}
+.pdf-open {
+  margin-top:0.5rem;
+  font-size:0.8rem;
+  color:rgba(255,255,255,0.4);
+}
+</style>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    JIJUNA GOURMET S.A.C.
+    <span>Sistema de Gestión Ambiental — ISO 14001:2015 · Cajamarca, Perú · 2026</span>
+  </div>
+  <div class="footer-info">
+    <p>Curso: Sistemas Integrados de Gestión y Monitoreo Ambiental</p>
+    <p>Docente: Maryuri Yohana Vega Eras · Semestre 2026-1</p>
+    <p>Grupo 3 · Ingeniería Ambiental · UPN Cajamarca</p>
+  </div>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
